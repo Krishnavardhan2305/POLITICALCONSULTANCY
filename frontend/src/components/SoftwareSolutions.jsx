@@ -130,7 +130,7 @@ const SoftwareSolutions = () => {
             </div>
 
             {/* Image Content */}
-            <div className="md:w-1/2 rounded-lg overflow-hidden shadow-lg">
+            <div className="md:w-1/2 h-80 rounded-lg overflow-hidden shadow-lg">
               <img
                 src={Software}
                 alt="Software Solutions"

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import heroImage from "../assets/HeroSec.jpeg";
-
+import {  Link } from "react-router-dom";
 const HeroSection = () => {
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
@@ -58,9 +58,11 @@ const HeroSection = () => {
               GET STARTED
             </button>
           </Link>
+          <Link to='/schedule-a-consultation'>
           <button className="border border-white hover:bg-white hover:text-gray-900 text-white px-8 py-3 rounded-md transition duration-300 font-semibold transform hover:scale-105 hover:shadow-lg">
             LEARN MORE
           </button>
+          </Link>
         </div>
       </div>
     </div>

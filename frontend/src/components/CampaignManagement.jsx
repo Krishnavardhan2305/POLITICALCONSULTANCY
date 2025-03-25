@@ -75,13 +75,15 @@ const CampaignManagement = () => {
             </div>
 
             {/* Image Content */}
-            <div className="md:w-1/2 rounded-lg overflow-hidden shadow-lg">
+            {/* Image Content */}
+            <div className="md:w-1/2 h-80 rounded-lg overflow-hidden shadow-lg">
               <img
                 src={campaignHero}
                 alt="Campaign Management"
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
+
           </div>
         </div>
 

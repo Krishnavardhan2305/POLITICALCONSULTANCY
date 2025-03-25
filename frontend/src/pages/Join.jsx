@@ -154,7 +154,7 @@ const Join = () => {
             className="h-5 w-5 text-blue-500 rounded focus:ring-2 focus:ring-blue-400"
           />
           <label className="text-sm font-semibold text-gray-600">
-            Are You In Power?
+            Currently In Power?
           </label>
         </div>
         <div className="mb-4">
