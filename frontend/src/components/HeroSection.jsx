@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import heroImage from "../assets/herosec.jpeg";
+import heroImage from "../assets/Herosec.jpeg";
 
 const HeroSection = () => {
   const overlayRef = useRef(null);

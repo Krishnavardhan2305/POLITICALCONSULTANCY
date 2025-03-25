@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import clientsBg from "../assets/clients.jpeg";
+import clientsBg from "../assets/Clients.jpeg";
 
 const Clients = () => {
   const [isVisible, setIsVisible] = useState(false);
