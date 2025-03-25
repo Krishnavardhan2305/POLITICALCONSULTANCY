@@ -57,7 +57,7 @@ const HeroSection = () => {
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md transition duration-300 font-semibold transform hover:scale-105 hover:shadow-lg">
               GET STARTED
             </button>
-          <Link/>
+          </Link>
           <button className="border border-white hover:bg-white hover:text-gray-900 text-white px-8 py-3 rounded-md transition duration-300 font-semibold transform hover:scale-105 hover:shadow-lg">
             LEARN MORE
           </button>
