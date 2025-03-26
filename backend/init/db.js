@@ -1,29 +1,58 @@
+// 
+
+
+// import pg from "pg";
+// import dotenv from "dotenv";
+
+// const { Pool } = pg; // Changed from Client to Pool
+// dotenv.config();
+
+// const pool = new Pool({
+//   connectionString: process.env.DB_STRING,
+//   ssl: { rejectUnauthorized: false }
+// });
+
+// // Test connection
+// try {
+//   await pool.query("SELECT NOW()");
+//   console.log("Connected to Supabase PostgreSQL!");
+// } catch (error) {
+//   console.error("Database connection error:", error);
+//   process.exit(1);
+// }
+
+// export const query = (text, params) => pool.query(text, params);
+// export default pool;
+
 import pg from "pg";
 import dotenv from "dotenv";
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: resolve(__dirname, '../.env') }); 
 
-const { Client } = pg;
-dotenv.config();
+const { Pool } = pg;
 
-const db = new Client({
-    user: process.env.PG_USERNAME, 
-    password: process.env.PG_PWD,
-    host: process.env.PG_HOST,  // Updated to use your .env PG_HOST
-    database: process.env.PG_DB,
-    port: process.env.PG_PORT,
+const pool = new Pool({
+  connectionString: process.env.DB_STRING,
+  ssl: { rejectUnauthorized: false }
 });
 
-try {   
-  await db.connect();
-  console.log("Connected to PostgreSQL database!");
-} catch (error) {
-  console.error("Database connection error:", error);
-  process.exit(1);
-}
+(async () => {
+  try {
+    await pool.query("SELECT NOW()");
+    console.log("Connected to Supabase PostgreSQL!");
+  } catch (error) {
+    console.error("Database connection error:", error);
+    process.exit(1);
+  }
+})();
 
-db.on("error", (err) => {
-  console.error("Unexpected error on idle client", err);
+pool.on("error", (err) => {
+  console.error("Unexpected database error:", err);
   process.exit(1);
 });
 
-export const query = (text, params) => db.query(text, params);
-export default db;
+export const query = (text, params) => pool.query(text, params);
+export default pool;
