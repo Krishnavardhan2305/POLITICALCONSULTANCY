@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/index.js",
-    "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "start": "nodemon backend/index.js"
   },
   "keywords": [],
@@ -14,7 +14,6 @@
   "description": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.49.3",
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "cookie-parser": "^1.4.7",
