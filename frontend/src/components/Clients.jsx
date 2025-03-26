@@ -4,25 +4,22 @@ import clientsBg from "../assets/Clients.jpeg";
 const Clients = () => {
   const [isVisible, setIsVisible] = useState(false);
   
-  // Testimonial data (enhanced with avatar placeholders)
-  const testimonials = [
+  // Commitment details replacing previous testimonials
+  const commitmentDetails = [
     {
-      quote: "JKR Consultancy transformed our campaign strategy completely. Their data-driven approach and strategic insights were invaluable for our success.",
-      author: "Coming Soon",
-      position: "Campaign Manager",
-      color: "bg-blue-600"
+      title: "Holistic Campaign Ecosystem",
+      description: "Integrated services spanning social media, campaign management, data-driven policies, ground-level outreach, and custom software solutions.",
+      icon: "🌐"
     },
     {
-      quote: "Working with JKR has been a game-changer for our political movement. They understand the nuances of voter behavior and helped us craft messages that truly resonated.",
-      author: "Coming Soon",
-      position: "Party Leader",
-      color: "bg-indigo-600"
+      title: "Data-Driven Precision",
+      description: "Meticulously crafted strategies informed by deep analytical insights, ensuring targeted and effective political campaigns.",
+      icon: "📊"
     },
     {
-      quote: "The team at JKR provided us with expert guidance throughout our campaign. Their dedication and professionalism made all the difference in our victory.",
-      author: "Coming Soon",
-      position: "Elected Official",
-      color: "bg-purple-600"
+      title: "Personalized Strategy",
+      description: "Custom solutions that reflect your unique campaign identity, values, and specific political objectives.",
+      icon: "🎯"
     }
   ];
 
@@ -70,7 +67,7 @@ const Clients = () => {
             transitionDelay: '0.2s'
           }}
         >
-          WHAT OUR CLIENTS SAY
+          WHAT WE COMMIT TO OFFER
         </h2>
         <div 
           className={`w-24 h-1 bg-blue-400 mx-auto mb-16 ${
@@ -83,7 +80,7 @@ const Clients = () => {
         ></div>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {commitmentDetails.map((detail, index) => (
             <div 
               key={index} 
               className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-700 transition-all duration-700 hover:shadow-blue-500/20 hover:shadow-xl hover:border-blue-400/30 hover:-translate-y-1"
@@ -93,25 +90,29 @@ const Clients = () => {
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
               }}
             >
-              <svg className="w-10 h-10 text-blue-400 mb-4 transform hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <p className="text-gray-200 italic mb-6 line-clamp-4 hover:line-clamp-none transition-all duration-300">{testimonial.quote}</p>
-              <div className="flex items-center">
-                <div className={`w-12 h-12 ${testimonial.color} rounded-full flex items-center justify-center text-white font-bold text-xl transition-transform duration-300 hover:scale-110`}>
-                  {testimonial.author.charAt(0)}
-                </div>
-                <div className="ml-4">
-                  <p className="text-white font-semibold">{testimonial.author}</p>
-                  <p className="text-blue-400 text-sm">{testimonial.position}</p>
-                </div>
-              </div>
+              <div className="text-5xl mb-4 text-blue-400">{detail.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-4">{detail.title}</h3>
+              <p className="text-gray-200 line-clamp-4 hover:line-clamp-none transition-all duration-300">
+                {detail.description}
+              </p>
             </div>
           ))}
         </div>
+
+        <div 
+          className={`text-center mt-12 ${
+            isVisible ? 'animate-fade-in-down' : 'opacity-0'
+          }`}
+          style={{ 
+            animation: isVisible ? 'fadeInDown 0.6s ease-out forwards' : 'none',
+            transitionDelay: '0.8s'
+          }}
+        >
+         
+        </div>
       </div>
       
-      {/* CSS Animations */}
+      {/* Previous CSS Animations remain the same */}
       <style jsx>{`
         @keyframes fadeInDown {
           from {

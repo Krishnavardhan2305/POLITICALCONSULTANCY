@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import doorCampaign from "../assets/DoorCampaign.jpeg";
 
 const DoorToDoorCampaigns = () => {
+  const [activeTab, setActiveTab] = useState("targeting");
   const headingRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -37,44 +38,43 @@ const DoorToDoorCampaigns = () => {
     };
   }, []);
 
-  const features = [
+  const campaignOptions = [
     {
+      id: "targeting",
       title: "Targeted Voter Outreach",
-      description: "Identify and engage with high-value voters in specific districts using demographic data and voting history.",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-        </svg>
-      )
+      description: "Precision targeting to connect with the most relevant voters for your campaign, using advanced demographic and behavioral insights.",
+      features: [
+        "Micro-targeted voter segmentation",
+        "Demographic & historical voting analysis",
+        "Personalized engagement strategies",
+        "Real-time voter mapping"
+      ]
     },
     {
-      title: "Custom Survey Creation",
-      description: "Design personalized questionnaires to gather valuable insights on voter preferences and concerns.",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-        </svg>
-      )
+      id: "surveying",
+      title: "Advanced Surveying",
+      description: "Capture deep voter insights through professionally designed surveys that go beyond surface-level information.",
+      features: [
+        "Custom questionnaire design",
+        "Mobile-first data collection",
+        "Sentiment and trend analysis",
+        "Comprehensive reporting tools"
+      ]
     },
     {
-      title: "Real-time Data Collection",
-      description: "Capture responses instantly with our mobile app, allowing for immediate data analysis and campaign adjustments.",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
-        </svg>
-      )
-    },
-    {
-      title: "Volunteer Training",
-      description: "Comprehensive training materials and sessions to prepare your canvassing team for effective voter engagement.",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-        </svg>
-      )
+      id: "training",
+      title: "Canvasser Training",
+      description: "Comprehensive training program to equip your team with the skills and knowledge to conduct effective door-to-door campaigns.",
+      features: [
+        "Communication skill workshops",
+        "Voter interaction techniques",
+        "Data collection best practices",
+        "Conflict resolution training"
+      ]
     }
   ];
+
+  const activeOption = campaignOptions.find(option => option.id === activeTab);
 
   return (
     <div className="bg-gradient-to-b from-slate-900 to-blue-900 min-h-screen py-20 px-6">
@@ -87,27 +87,26 @@ const DoorToDoorCampaigns = () => {
         </div>
 
         {/* Hero Section */}
-        {/* Hero Section */}
         <div ref={headingRef} className="mb-16 opacity-0 translate-y-10">
           <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 p-12 rounded-lg shadow-2xl">
-
             {/* Text Content */}
-            <div className="md:w-1/2 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-                Door-to-Door Campaigns
+            <div className="md:w-3/4 lg:w-1/2 text-center md:text-left bg-slate-900/70 p-8 rounded-xl border border-blue-900/30 shadow-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Revolutionize Voter Engagement
               </h1>
-              <div className="w-24 h-1 bg-blue-400 mb-6 mx-auto md:mx-0"></div>
-              <p className="text-blue-200 text-lg mb-8">
-                Connect with voters personally through targeted outreach and data-driven canvassing strategies.
+              <div className="w-20 h-1.5 bg-blue-500 mb-6 mx-auto md:mx-0 rounded-full"></div>
+              <p className="text-blue-100 text-lg mb-8 opacity-90">
+                Unlock the power of personal connection with data-driven door-to-door campaign strategies that transform voter interactions.
               </p>
-
               <Link to="/join">
-                <button className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-10 py-4 rounded-lg font-semibold shadow-lg transition-transform transform hover:scale-105">
+                <button className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold 
+                  hover:bg-blue-700 transition-all duration-300 ease-in-out 
+                  transform hover:translate-y-[-5px] hover:shadow-xl 
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                   Get Started
                 </button>
               </Link>
             </div>
-
             {/* Image Content */}
             <div className="md:w-1/2 h-80 rounded-lg overflow-hidden shadow-lg">
               <img
@@ -119,134 +118,102 @@ const DoorToDoorCampaigns = () => {
           </div>
         </div>
 
-
         {/* Content Section */}
         <div ref={contentRef} className="bg-white rounded-xl shadow-xl p-8 md:p-12 opacity-0 translate-y-10">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">Comprehensive Door-to-Door Strategy</h2>
+              <h2 className="text-2xl font-bold text-slate-800 mb-4">Strategic Door-to-Door Approach</h2>
               <p className="text-slate-600 mb-4">
-                Our team of experienced campaign specialists will help you develop and
-                implement effective door-to-door strategies tailored to your specific goals and target
-                voters.
-              </p>
-              <p className="text-slate-600">
-                We take a data-driven approach to canvassing, focusing on
-                measurable results and continuous optimization throughout your campaign.
+                Our comprehensive methodology transforms traditional canvassing into a precise, data-driven engagement tool that maximizes voter connection and campaign impact.
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">Our Approach</h2>
+              <h2 className="text-2xl font-bold text-slate-800 mb-4">Our Campaign Philosophy</h2>
               <p className="text-slate-600 mb-4">
-                We believe in personalized voter engagement that creates lasting connections
-                and effectively communicates your message at the doorstep.
-              </p>
-              <p className="text-slate-600">
-                Every aspect of your door-to-door campaign is carefully planned and executed to align with
-                your platform, values, and campaign objectives.
+                We believe in meaningful, personalized voter interactions that go beyond simple data collection—creating genuine connections that drive political engagement.
               </p>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">What We Offer</h2>
+          {/* Campaign Options Navigation */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Our Campaign Strategies</h2>
+            
+            <div className="flex justify-center border-b mb-8">
+              {campaignOptions.map((option) => (
+                <button
+                  key={option.id}
+                  onClick={() => setActiveTab(option.id)}
+                  className={`px-6 py-4 text-lg font-medium transition-colors duration-300 ${
+                    activeTab === option.id
+                      ? "bg-blue-600 text-white"
+                      : "text-slate-700 hover:bg-blue-100"
+                  }`}
+                >
+                  {option.title}
+                </button>
+              ))}
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-                <div className="bg-blue-600 text-white p-3 rounded-lg shadow-lg inline-block mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{feature.title}</h3>
-                <p className="text-slate-600">
-                  {feature.description}
-                </p>
+            {/* Active Option Content */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="overflow-hidden rounded-lg shadow-md">
+                <img
+                  src={doorCampaign}
+                  alt={activeOption.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            ))}
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">{activeOption.title}</h3>
+                <p className="text-slate-600 mb-6">{activeOption.description}</p>
+                <h4 className="font-semibold text-lg text-slate-800 mb-3">Key Features:</h4>
+                <ul className="space-y-2">
+                  {activeOption.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-600 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-slate-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
+          {/* Campaign Process Section */}
           <div className="bg-blue-50 p-8 rounded-lg shadow-md mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Our Door-to-Door Campaign Process</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Our Campaign Process</h2>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Planning & Strategy</h3>
-                <p className="text-slate-600">Development of targeted canvassing strategies based on voter demographics and history.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Strategic Planning</h3>
+                <p className="text-slate-600">Develop targeted canvassing strategies based on comprehensive voter analysis.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Training & Preparation</h3>
-                <p className="text-slate-600">Comprehensive training and materials for all canvassing team members.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Team Preparation</h3>
+                <p className="text-slate-600">Comprehensive training to equip canvassers with essential skills and knowledge.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Implementation</h3>
-                <p className="text-slate-600">Professional management of all canvassing activities with real-time monitoring.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Field Execution</h3>
+                <p className="text-slate-600">Professional management of canvassing activities with real-time monitoring.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Data Analysis</h3>
-                <p className="text-slate-600">Comprehensive analysis of collected data with strategic recommendations.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Insights & Optimization</h3>
+                <p className="text-slate-600">Comprehensive data analysis with strategic recommendations for continuous improvement.</p>
               </div>
             </div>
           </div>
 
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Data-Driven Decisions</h2>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Custom Survey Design</h3>
-                <p className="text-slate-600">
-                  Professionally designed surveys based on your campaign goals and tailored to extract the most valuable information from each voter interaction.
-                </p>
-              </div>
-
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Real-time Collection</h3>
-                <p className="text-slate-600">
-                  Capture voter responses instantly with our mobile application, allowing for immediate data analysis and campaign strategy adjustments.
-                </p>
-              </div>
-
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Interactive Analytics</h3>
-                <p className="text-slate-600">
-                  Access comprehensive analytics dashboards that visualize voter data, identify trends, and highlight areas requiring attention.
-                </p>
-              </div>
-
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Strategic Recommendations</h3>
-                <p className="text-slate-600">
-                  Receive data-backed strategic recommendations to refine your messaging, resource allocation, and campaign focus.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Proven Results</h2>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md text-center opacity-0 transform translate-y-8 transition-all duration-700">
-                <div className="text-4xl font-bold text-blue-600 mb-2">24%</div>
-                <p className="text-slate-700">Average increase in voter engagement</p>
-              </div>
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md text-center opacity-0 transform translate-y-8 transition-all duration-700">
-                <div className="text-4xl font-bold text-blue-600 mb-2">15k+</div>
-                <p className="text-slate-700">Doors knocked in the average campaign</p>
-              </div>
-              <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md text-center opacity-0 transform translate-y-8 transition-all duration-700">
-                <div className="text-4xl font-bold text-blue-600 mb-2">82%</div>
-                <p className="text-slate-700">Client campaigns achieved their goals</p>
-              </div>
-            </div>
-          </div>
-
+          {/* CTA Section */}
           <div className="bg-blue-900 text-white p-8 rounded-lg shadow-md">
-            <h2 className="text-3xl font-bold mb-6 text-center">Ready to Connect with Voters?</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center">Ready to Elevate Your Voter Outreach?</h2>
             <p className="text-blue-200 text-center mb-8 max-w-3xl mx-auto">
-              Let our expert team help you design and implement an effective door-to-door campaign strategy tailored to your specific goals.
+              Our expert team is ready to transform your door-to-door campaign with innovative strategies and cutting-edge technologies.
             </p>
             <div className="flex justify-center">
               <Link to='/schedule-a-consultation'>
@@ -261,14 +228,20 @@ const DoorToDoorCampaigns = () => {
 
       <style jsx>{`
         .animate-fade-in {
-          animation: fadeIn 1s forwards;
-          opacity: 1 !important;
-          transform: translateY(0) !important;
+          animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          opacity: 0;
+          transform: translateY(20px);
         }
         
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          0% { 
+            opacity: 0; 
+            transform: translateY(20px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
         }
       `}</style>
     </div>

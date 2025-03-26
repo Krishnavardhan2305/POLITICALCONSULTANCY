@@ -11,6 +11,10 @@ const Footer = ({
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  
+  // State for mobile dropdowns
+  const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -92,6 +96,25 @@ const Footer = ({
     }
   ];
 
+  // Dropdown Toggle Component
+  const DropdownToggle = ({ isOpen, onClick, title }) => (
+    <div 
+      className="flex justify-between items-center cursor-pointer"
+      onClick={onClick}
+    >
+      <h3 className="text-xl font-semibold mb-4">{title}</h3>
+      <svg 
+        className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  );
+
   return (
     <footer className="bg-slate-900 text-white">
       {/* Wave separator */}
@@ -133,13 +156,14 @@ const Footer = ({
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="transform transition duration-500 hover:translate-y-[-8px]">
-            <h3 className="text-xl font-semibold mb-6 relative">
-              Quick Links
-              <span className="absolute bottom-[-8px] left-0 w-12 h-1 bg-blue-500 transform transition-all duration-300 group-hover:w-24"></span>
-            </h3>
-            <ul className="space-y-3">
+          {/* Quick Links - Mobile Responsive */}
+          <div className="transform transition duration-500 hover:translate-y-[-8px] md:block">
+            <DropdownToggle 
+              isOpen={isQuickLinksOpen} 
+              onClick={() => setIsQuickLinksOpen(!isQuickLinksOpen)}
+              title="Quick Links"
+            />
+            <ul className={`space-y-3 ${isQuickLinksOpen ? 'block' : 'hidden md:block'}`}>
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   {link.ref ? (
@@ -184,17 +208,17 @@ const Footer = ({
             </ul>
           </div>
 
-          {/* Services */}
-          {/* Services */}
-          <div className="transform transition duration-500 hover:translate-y-[-8px]">
-            <h3 className="text-xl font-semibold mb-6 relative">
-              Our Services
-              <span className="absolute bottom-[-8px] left-0 w-12 h-1 bg-blue-500 transform transition-all duration-300 group-hover:w-24"></span>
-            </h3>
-            <ul className="space-y-3">
+          {/* Services - Mobile Responsive */}
+          <div className="transform transition duration-500 hover:translate-y-[-8px] md:block">
+            <DropdownToggle 
+              isOpen={isServicesOpen} 
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              title="Our Services"
+            />
+            <ul className={`space-y-3 ${isServicesOpen ? 'block' : 'hidden md:block'}`}>
               {serviceLinks.map((service, index) => (
                 <li key={index}>
-                  <Link  // Changed from button to Link
+                  <Link
                     to={service.to}
                     className="text-gray-400 hover:text-blue-400 transition-all duration-300 flex items-center group"
                   >
@@ -262,22 +286,7 @@ const Footer = ({
           <p className="text-sm text-gray-400">
             Copyright © {currentYear} JKR Consultancy - All Rights Reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            {[
-              { to: "/privacy", label: "Privacy Policy" },
-              { to: "/terms", label: "Terms of Service" },
-              { to: "/faq", label: "FAQ" }
-            ].map((link, index) => (
-              <Link
-                key={index}
-                to={link.to}
-                className="text-sm text-gray-400 hover:text-blue-400 transition-all duration-300 relative group"
-              >
-                {link.label}
-                <span className="absolute bottom-[-2px] left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
-          </div>
+          
         </div>
       </div>
 
