@@ -15,7 +15,8 @@ app.use(express.json());
 const allowedOrigins = [
     "http://localhost:5173",  // Local development frontend
     "http://localhost:8080",  // Local development frontend
-    "https://politicalconsultancy-pegg.vercel.app"  // Production frontend on Vercel
+    "https://politicalconsultancy-pegg.vercel.app" ,//production
+    "https://jkrconsultancy.onrender.com" // Production 
 ];
 
 const corsOptions = {
