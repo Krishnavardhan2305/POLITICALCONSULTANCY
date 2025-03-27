@@ -17,12 +17,14 @@ export const addClient = async (req, res) => {
             return res.status(400).json({ message: "Missing required fields" });
         }
         await clientService.addClient(name, age, constituency, village, mobilenum, emailId, inPower,politicalparty);
-        // await transporter.sendMail({
-        //     from: process.env.EMAIL_USER,
-        //     to: process.env.TO_USER,
-        //     subject: "A New Client Added",
-        //     text: `Hi,A new client ${name}  has been  added.`,
-        // });
+        console.log(process.env.EMAIL_USER);
+        console.log(process.env.TO_USER);        
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: process.env.TO_USER,
+            subject: "A New Client Added",
+            text: `Hi,A new client ${name}  has been  added.`,
+        });
         return res.status(201).json({
             message: "Client added successfully!",
             success: true
