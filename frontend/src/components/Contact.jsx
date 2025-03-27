@@ -125,22 +125,13 @@ const Contact = () => {
               title: "Phone",
               content: "+91 630 156 7773"
             },
-             {
-              icon: (
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-              ),
+            {
+              icon: <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>,
               title: "Email",
-              content: (
-                <a 
-                  href="mailto:jkrconsultancyinfo@gmail.com"
-                  className="text-blue-600 text-lg underline hover:text-blue-800 transition-colors inline-block whitespace-nowrap"
-                >
-                  jkrconsultancyinfo@gmail.com
-                </a>
-              ),
+              content: "jkrconsultancyinfo@gmail.com"
             },
             {
               icon: <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
@@ -173,16 +164,16 @@ const Contact = () => {
           {/* Map Section with Animation */}
           <div ref={mapRef} className="flex-1 opacity-0 translate-x-[-50px] transition-all duration-1000">
             <div className="bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
-              <div className="bg-slate-200 h-64 md:h-96 rounded-t-lg overflow-hidden relative">
+            <div className="bg-slate-200 h-64 md:h-96 rounded-t-lg overflow-hidden relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!4v1711134511101!6m8!1m7!1s_QsyVSuC8qLJIm8KBSJn7Q!2m2!1d17.22836899999999!2d82.22981900000001!3f176.75!4f-9.93!5f0.7820865974627469" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15140.930068066422!2d82.21901876977536!3d17.23129572939147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39d5e3b103ff51%3A0x758e8340d1d50c90!2sDharmavaram%2C%20Andhra%20Pradesh%20533430!5e0!3m2!1sen!2sin!4v1711133795761!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen="" 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Prathipadu Mandal, Kakinada District, Andhra Pradesh, India"
+                  title="Dharmavaram, Andhra Pradesh, India"
                   className="w-full h-full"
                 ></iframe>
               </div>
