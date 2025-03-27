@@ -2,13 +2,13 @@ import * as clientService from "../services/adminServices.js";
 import * as reviewServices from "../services/reviewServices.js";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
+import transporter from "../utils/Transporter.js";
 import dotenv from "dotenv";
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
-import transporter from "../utils/Transporter.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-dotenv.config({ path: resolve(__dirname, '../../.env') });
+dotenv.config({ path: resolve(__dirname, '../../.env') }); 
 
 export const addClient = async (req, res) => {
     try {
