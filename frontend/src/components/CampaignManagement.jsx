@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import campaignHero from "../assets/analytics.jpeg"; // Replace with your actual image path
@@ -8,6 +8,7 @@ import communicationIcon from "../assets/analytics.jpeg";
 import eventIcon from "../assets/analytics.jpeg";
 
 const CampaignManagement = () => {
+  const [activeTab, setActiveTab] = useState("strategy");
   const headingRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -42,6 +43,47 @@ const CampaignManagement = () => {
     };
   }, []);
 
+  const campaignOptions = [
+    {
+      id: "strategy",
+      title: "Strategic Planning",
+      image: strategyIcon,
+      description: "Development of comprehensive campaign strategies based on thorough research and analysis of your target demographics and political landscape.",
+      features: [
+        "In-depth demographic research",
+        "Competitive landscape analysis",
+        "Targeted messaging development",
+        "Strategic positioning framework"
+      ]
+    },
+    {
+      id: "analytics",
+      title: "Performance Tracking",
+      image: analyticsIcon,
+      description: "Robust analytics and reporting systems to monitor campaign progress, measure impact, and make data-driven adjustments in real-time.",
+      features: [
+        "Real-time campaign performance monitoring",
+        "Voter engagement metrics",
+        "ROI tracking for campaign activities",
+        "Predictive analytics tools"
+      ]
+    },
+    {
+      id: "messaging",
+      title: "Message Development",
+      image: communicationIcon,
+      description: "Crafting compelling narratives and messaging frameworks that resonate with voters and effectively communicate your platform and values.",
+      features: [
+        "Narrative strategy creation",
+        "Audience-focused messaging",
+        "Multi-channel communication planning",
+        "Brand and platform alignment"
+      ]
+    }
+  ];
+
+  const activeOption = campaignOptions.find(option => option.id === activeTab);
+
   return (
     <div className="bg-gradient-to-b from-slate-900 to-blue-900 min-h-screen py-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -53,28 +95,26 @@ const CampaignManagement = () => {
         </div>
 
         {/* Hero Section */}
-        {/* Hero Section */}
         <div ref={headingRef} className="mb-16 opacity-0 translate-y-10">
           <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 p-12 rounded-lg shadow-2xl">
-
             {/* Text Content */}
-            <div className="md:w-1/2 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-                Campaign Management for Maximum Impact
+            <div className="md:w-3/4 lg:w-1/2 text-center md:text-left bg-slate-900/70 p-8 rounded-xl border border-blue-900/30 shadow-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight background-clip-text">
+                Elevate Your Campaign with Strategic Management
               </h1>
-              <div className="w-24 h-1 bg-blue-400 mb-6 mx-auto md:mx-0"></div>
-              <p className="text-blue-200 text-lg mb-8">
-                Strategic planning and execution to enhance your campaign’s reach, efficiency, and success.
+              <div className="w-20 h-1.5 bg-blue-500 mb-6 mx-auto md:mx-0 rounded-full"></div>
+              <p className="text-blue-100 text-lg mb-8 opacity-90">
+                Comprehensive campaign management solutions designed to maximize your political impact, optimize voter engagement, and drive strategic success.
               </p>
-
               <Link to="/join">
-                <button className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-10 py-4 rounded-lg font-semibold shadow-lg transition-transform transform hover:scale-105">
+                <button className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold 
+                  hover:bg-blue-700 transition-all duration-300 ease-in-out 
+                  transform hover:translate-y-[-5px] hover:shadow-xl 
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                   Get Started
                 </button>
               </Link>
             </div>
-
-            {/* Image Content */}
             {/* Image Content */}
             <div className="md:w-1/2 h-80 rounded-lg overflow-hidden shadow-lg">
               <img
@@ -83,10 +123,8 @@ const CampaignManagement = () => {
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
-
           </div>
         </div>
-
 
         {/* Content Section */}
         <div ref={contentRef} className="bg-white rounded-xl shadow-xl p-8 md:p-12 opacity-0 translate-y-10">
@@ -94,109 +132,99 @@ const CampaignManagement = () => {
             <div>
               <h2 className="text-2xl font-bold text-slate-800 mb-4">Comprehensive Campaign Management</h2>
               <p className="text-slate-600 mb-4">
-                Our team of experienced campaign managers will help you develop and
-                implement a winning strategy tailored to your specific goals and target
-                audience.
-              </p>
-              <p className="text-slate-600">
-                We take a data-driven approach to campaign management, focusing on
-                measurable results and continuous optimization throughout your campaign.
+                Our team of experienced campaign managers develops and implements winning strategies tailored to your specific goals and target audience.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-slate-800 mb-4">Our Approach</h2>
               <p className="text-slate-600 mb-4">
-                We believe in integrated campaign strategies that leverage multiple channels
-                to effectively reach voters and communicate your message.
-              </p>
-              <p className="text-slate-600">
-                Every aspect of your campaign is carefully planned and executed to align with
-                your platform, values, and campaign objectives.
+                We leverage data-driven insights, strategic communication, and innovative technologies to create impactful campaign management solutions.
               </p>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">What We Offer</h2>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-              <div className="bg-blue-600 text-white p-3 rounded-lg shadow-lg inline-block mb-4">
-                <img src={strategyIcon} alt="Strategy" className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Strategic Planning</h3>
-              <p className="text-slate-600">
-                Development of comprehensive campaign strategies based on thorough
-                research and analysis of your target demographics and political landscape.
-              </p>
+          {/* Campaign Options Navigation */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Our Campaign Management Services</h2>
+            
+            <div className="flex justify-center border-b mb-8">
+              {campaignOptions.map((option) => (
+                <button
+                  key={option.id}
+                  onClick={() => setActiveTab(option.id)}
+                  className={`px-6 py-4 text-lg font-medium transition-colors duration-300 ${
+                    activeTab === option.id
+                      ? "bg-blue-600 text-white"
+                      : "text-slate-700 hover:bg-blue-100"
+                  }`}
+                >
+                  {option.title}
+                </button>
+              ))}
             </div>
 
-            <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-              <div className="bg-blue-600 text-white p-3 rounded-lg shadow-lg inline-block mb-4">
-                <img src={analyticsIcon} alt="Analytics" className="w-6 h-6" />
+            {/* Active Option Content */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="overflow-hidden rounded-lg shadow-md">
+                <img
+                  src={activeOption.image}
+                  alt={activeOption.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Performance Tracking</h3>
-              <p className="text-slate-600">
-                Robust analytics and reporting systems to monitor campaign progress,
-                measure impact, and make data-driven adjustments in real-time.
-              </p>
-            </div>
-
-            <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-              <div className="bg-blue-600 text-white p-3 rounded-lg shadow-lg inline-block mb-4">
-                <img src={communicationIcon} alt="Communication" className="w-6 h-6" />
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">{activeOption.title}</h3>
+                <p className="text-slate-600 mb-6">{activeOption.description}</p>
+                <h4 className="font-semibold text-lg text-slate-800 mb-3">Key Features:</h4>
+                <ul className="space-y-2">
+                  {activeOption.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-600 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-slate-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Message Development</h3>
-              <p className="text-slate-600">
-                Crafting compelling narratives and messaging frameworks that resonate
-                with voters and effectively communicate your platform and values.
-              </p>
-            </div>
-
-            <div className="feature-item bg-blue-50 p-6 rounded-lg shadow-md opacity-0 transform translate-y-8 transition-all duration-700">
-              <div className="bg-blue-600 text-white p-3 rounded-lg shadow-lg inline-block mb-4">
-                <img src={eventIcon} alt="Events" className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Event Coordination</h3>
-              <p className="text-slate-600">
-                Planning and execution of campaign events, town halls, debates,
-                and fundraisers to maximize visibility and voter engagement.
-              </p>
             </div>
           </div>
 
+          {/* Campaign Process Section */}
           <div className="bg-blue-50 p-8 rounded-lg shadow-md mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Our Campaign Management Process</h2>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Research & Analysis</h3>
-                <p className="text-slate-600">Thorough analysis of political landscape, competitor strategies, and voter demographics.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Research</h3>
+                <p className="text-slate-600">Comprehensive analysis of political landscape and voter demographics.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Strategy Development</h3>
-                <p className="text-slate-600">Creation of a comprehensive campaign strategy tailored to your specific goals.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Strategy</h3>
+                <p className="text-slate-600">Develop tailored campaign strategy aligned with your goals.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Implementation</h3>
-                <p className="text-slate-600">Professional management of all campaign elements and execution of strategies.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Execution</h3>
+                <p className="text-slate-600">Implement comprehensive campaign management and communication.</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Monitoring & Optimization</h3>
-                <p className="text-slate-600">Continuous tracking of campaign performance with regular analysis and adjustments.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Optimization</h3>
+                <p className="text-slate-600">Continuous monitoring and data-driven campaign adjustments.</p>
               </div>
             </div>
           </div>
 
+          {/* CTA Section */}
           <div className="bg-blue-900 text-white p-8 rounded-lg shadow-md">
-            <h2 className="text-3xl font-bold mb-6 text-center">Ready to Launch Your Campaign?</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center">Ready to Elevate Your Campaign?</h2>
             <p className="text-blue-200 text-center mb-8 max-w-3xl mx-auto">
-              Our team of experienced campaign managers is ready to help you develop and implement a winning strategy. Let's work together to achieve your campaign goals.
+              Our expert campaign management team is ready to help you develop a winning strategy, maximize voter engagement, and achieve your political objectives.
             </p>
             <div className="flex justify-center">
-              <Link className="'/schedule-a-consultation">
+              <Link to='/schedule-a-consultation'>
                 <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold shadow-lg hover:bg-blue-100 transition">
                   Schedule a Consultation
                 </button>
@@ -208,14 +236,20 @@ const CampaignManagement = () => {
 
       <style jsx>{`
         .animate-fade-in {
-          animation: fadeIn 1s forwards;
-          opacity: 1 !important;
-          transform: translateY(0) !important;
+          animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          opacity: 0;
+          transform: translateY(20px);
         }
         
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          0% { 
+            opacity: 0; 
+            transform: translateY(20px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
         }
       `}</style>
     </div>
