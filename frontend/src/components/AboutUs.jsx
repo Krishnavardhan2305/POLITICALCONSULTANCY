@@ -86,10 +86,6 @@ const AboutUs = () => {
                 {
                   title: "Campaign Management",
                   desc: "End-to-end solutions for successful political campaigns."
-                },
-                {
-                  title: "Policy Development",
-                  desc: "Research-backed policy recommendations that resonate with constituents."
                 }
               ].map((feature, index) => (
                 <div key={index} className="flex items-start opacity-0 translate-y-10 transition-all duration-700">
