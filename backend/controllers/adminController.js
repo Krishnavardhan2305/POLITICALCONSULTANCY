@@ -5,9 +5,11 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
+import transporter from "../utils/Transporter.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 dotenv.config({ path: resolve(__dirname, '../../.env') });
+
 export const addClient = async (req, res) => {
     try {
         const { name, age, constituency, village, mobilenum, emailId, inPower,politicalparty } = req.body;
