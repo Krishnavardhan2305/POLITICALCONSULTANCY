@@ -5,7 +5,7 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 dotenv.config({ path: resolve(__dirname, '../../.env') }); 
-// console.log(process.env.EMAIL_USER);
+// console.log(process.env.TO_USER);
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
