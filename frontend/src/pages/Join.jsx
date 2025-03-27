@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const Join = () => {
   const navigate = useNavigate();
+  const[loading,setLoading]=useState(false);
   const [formdata, setFormdata] = useState({
     name: "",
     age: "",
@@ -36,7 +37,7 @@ const Join = () => {
       toast.error("Please enter a valid email address.");
       return;
     }
-
+    setLoading(true);
     try {
       const response = await axios.post(`${ADMIN_API_ENDPOINT}/clients`, formdata, {
         headers: {
@@ -279,7 +280,9 @@ const Join = () => {
             whileHover={{ scale: 1.02, boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.98 }}
           >
-            JOIN NOW
+            {
+              loading?"Please Wait":"Join Now"
+            }
           </motion.button>
         </motion.div>
       </motion.form>
