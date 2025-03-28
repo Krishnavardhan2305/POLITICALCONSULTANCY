@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import Logo from '../assets/Logo.jpg'
 const Navbar = ({ heroRef, aboutRef, servicesRef, contactRef }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,6 +33,7 @@ const Navbar = ({ heroRef, aboutRef, servicesRef, contactRef }) => {
     <nav className={`bg-slate-900 shadow-lg fixed w-full z-50 top-0 left-0 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between p-4">
         <Link to="/" className="text-2xl font-bold text-white flex items-center">
+          <img src={Logo} alt="Logo" className="w-8 h-8 mr-2" />
           <span className="text-blue-500 transition-transform duration-500 hover:scale-110">JKR</span>
           <span className="transition-transform duration-500 hover:scale-110 ml-2">CONSULTANCY</span>
         </Link>
