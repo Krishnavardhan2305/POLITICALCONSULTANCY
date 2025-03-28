@@ -131,7 +131,11 @@ const Contact = () => {
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>,
               title: "Email",
-              content: "jkrconsultancyinfo@gmail.com"
+              content: (
+                <a href="mailto:jkrconsultancyinfo@gmail.com" className="text-blue-600 text-lg hover:underline">
+                  jkrconsultancyinfo@gmail.com
+                </a>
+              )
             },
             {
               icon: <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
