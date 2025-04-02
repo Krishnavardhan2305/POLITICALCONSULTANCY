@@ -7,18 +7,18 @@ const Clients = () => {
   // Commitment details replacing previous testimonials
   const commitmentDetails = [
     {
-      title: "Holistic Campaign Ecosystem",
-      description: "Integrated services spanning social media, campaign management, data-driven policies, ground-level outreach, and custom software solutions.",
+      title: "Election Surveys",
+      description: "We provide realtime insights and trends including pre poll, exit poll and post poll surveys",
       icon: "🌐"
     },
     {
-      title: "Data-Driven Precision",
-      description: "Meticulously crafted strategies informed by deep analytical insights, ensuring targeted and effective political campaigns.",
+      title: "Analytics & Political Intelligence",
+      description: "We provide Analytics & Political Intelligence reports analysing the datasets covering offline and online",
       icon: "📊"
     },
     {
-      title: "Personalized Strategy",
-      description: "Custom solutions that reflect your unique campaign identity, values, and specific political objectives.",
+      title: "Political Strategy & Advisory",
+      description: "We provide political strategic advisory services to the individual politicians and political parties",
       icon: "🎯"
     }
   ];
